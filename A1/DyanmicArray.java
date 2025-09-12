@@ -1,6 +1,15 @@
 public class DyanmicArray<T> implements IndexAccessADT<T> {
+
+    T[] myArray;
+
+    // WORK ON CONSTRUCTOR 
+    public Array(int length) {
+       this.myArray = (T[] new Object [length]);
+       this.size = length;
+    }
+
     
-        /**
+    /**
      * 
      * @param index index of element the user is attempting to access
      * returns element at accessed index
