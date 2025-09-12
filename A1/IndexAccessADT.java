@@ -68,14 +68,6 @@ interface IndexAccessADT <T> {
 
     /**
      * 
-     * @param startIndex index of the starting point
-     * @param endIndex index of the end
-     * @return copy of the list from starting point to ending point
-     */
-    public T subList(int startIndex, int endIndex);
-
-    /**
-     * 
      * @param startIndex
      * @param endIndex
      * @return updated dynamic array
