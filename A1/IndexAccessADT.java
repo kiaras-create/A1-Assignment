@@ -44,6 +44,16 @@ interface IndexAccessADT <T> {
 
     /**
      * 
+     * @param element
+     * Appends element to end of array
+     * Throws exception if specified indicies are out of bounds
+     * @return updated dynamic array
+     */
+    public T addElement(T element);
+
+
+    /**
+     * 
      * @param index of element user wants to remove
      * @param element that will be removed at the specified index
      * Removes element at specified index and shifts all other elements left 
