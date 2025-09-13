@@ -2,6 +2,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     T[] myArray;
 
+    // KIARA
     // WORK ON MAIN CONSTRUCTOR 
     public Array(int length) {
        this.myArray = (T[] new Object [length]);
@@ -9,6 +10,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+    // GROUP TOGETHER
     /**
      * SPECIAL CONSTRUCTOR ABOUT DYNAMIC ARRAY
      * copy constructor that makes a deep copy
@@ -19,6 +21,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
     
+    // CHIASHI
     /**
      * 
      * @param index index of element the user is attempting to access
@@ -30,6 +33,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     }
 
+    
+    // VICTORIA
     /**
      * 
      * @param index of element the user is attempting to modify
@@ -41,6 +46,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     }
 
+
+    // KIARA
     /**
      * 
      * @param arr array which user is passing in
@@ -50,6 +57,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     }
 
+
+    // CHIASHI
     /**
      * @param index of placement where user wants to add an element
      * @param element that will be added to specified index 
@@ -61,6 +70,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+
+    // VICTORIA
     /**
      * 
      * @param index of element user wants to remove
@@ -72,6 +83,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
         
     }
 
+
+    // VICTORIA
     /**
      * @param dynamicArray that will be concatenated to the end of the array
      * Will add a the dynamic array to the end of the array
@@ -82,6 +95,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+
+    // KIARA
     /**
      * 
      * @param index of the list
@@ -94,6 +109,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+
+    // CHIASHI
     /**
      * 
      * @param index
@@ -105,6 +122,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+
+    // KIARA
     /**
      * 
      * @param index
@@ -116,6 +135,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
+
+    // CHIASHI
     /**
      * 
      * @param startIndex
@@ -126,6 +147,8 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
         
     }
 
+
+    // VICTORIA
     /**
      * 
      * @param fromIndex
