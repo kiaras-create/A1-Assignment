@@ -36,6 +36,7 @@ interface IndexAccessADT <T> {
      * @param index of placement where user wants to add an element
      * @param element that will be added to specified index 
      * Inserts element in specified index and shifts all other elements accordingly
+     * Throws exception if specified indicies are out of bounds
      * @return updated dynamic array
      */
     public T addElement(int index, T element);

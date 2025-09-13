@@ -22,6 +22,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     
     // CHIASHI
+    // ASK IF WRITING ABOUT GENERIC ARRAY OR DEEP ARRAY "MYARRAY"
     /**
      * 
      * @param index index of element the user is attempting to access
@@ -29,7 +30,12 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
      * will throw an exception if specified index is out of bounds
      * @return element which was accessed
      */
-    public T getEle(int index) { 
+    public T getEle(int index) {
+      if (index > 0 && index < myArray.length) {
+         return myArray[index];
+      } else {
+         throw new IndexOutOfBoundsException("Your index is out of bounds.");
+      }
 
     }
 
@@ -63,10 +69,22 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
      * @param index of placement where user wants to add an element
      * @param element that will be added to specified index 
      * Inserts element in specified index and shifts all other elements accordingly
+     * Throws exception if specified indicies are out of bounds
      * @return updated dynamic array
      */
     public T addElement(int index, T element) {
-        
+        if (index > 0 && index < myArray.length) {
+         T[] newArray = new Array(myArray.length + 1);
+         for (int i = 0; i < myArray.length - (index-1); i++) {
+            newArray[i] = myArray[i];
+         }
+         newArray[index] = element;
+         for (int i = index; i < myArray.length; i++) {
+            newArray[index + i] = myArray[i];
+         }
+        } else {
+         throw new IndexOutOfBoundsException("Your index is out of bounds.");
+        }
     }
 
 
