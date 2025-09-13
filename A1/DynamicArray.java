@@ -91,7 +91,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     public T addElement(int index, T element) {
         if (index > 0 && index < myArray.length) {
          T[] newArray = new DynamicArray(myArray.length + 1);
-         for (int i = 0; i < myArray.length - (index-1); i++) {
+         for (int i = 0; i < index; i++) {
             newArray[i] = myArray[i];
          }
          newArray[index] = element;
@@ -113,10 +113,10 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
      public T addElement(T element) {
         T[] newArray = new DynamicArray(myArray.length + 1);
-        for (int i = 0; i < myArray.length + 1; i++) {
+        for (int i = 0; i < myArray.length; i++) {
             newArray[i] = myArray[i];
         }
-        newArray[myArray.length + 1] = element;
+        newArray[newArray.length - 1] = element;
         return newArray;
      }
 
@@ -201,7 +201,6 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // CHIASHI
     // NOT DONE
     // QUESTION ABOUT HOW TO FORMAT ARGUMENT FOR IF STATEMENT
-    // QUESTION ABOUT ARGUMENT FOR "FOR" LOOP
     /**
      * 
      * removes elements from first index up to other index in current array
@@ -215,6 +214,10 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
             T[] newArray = new DynamicArray(myArray.length - (endIndex - startIndex));
             for (int i = 0; i < startIndex; i++) {
                 newArray[i] = myArray[i];
+            }
+            // QUESTION ABOUT INDICIES FOR NEWARRAY ELEMENT
+            for (int i = endIndex; i < myArray.length; i++) {
+                newArray[endIndex - startIndex] = myArray[i];
             }
             return newArray;
         } else {
