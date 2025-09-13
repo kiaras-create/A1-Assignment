@@ -83,6 +83,24 @@ interface IndexAccessADT <T> {
     public T extractArray(int fromIndex, int toIndex);
 
 
+    /**
+     * 
+     * @param index
+     * @return new dynamic array
+     * returns elements from specified index and after as new dynamic array
+     */
+    public T splitSuffix(int index);
+
+
+    /**
+     * 
+     * @param index
+     * @return new dynamic array
+     * returns elements before specified index as new dynamic array
+     */
+    public T splitPrefix(int index);
+
+
     
 
 

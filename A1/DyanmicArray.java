@@ -83,15 +83,28 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
         
     }
 
+
     /**
      * 
-     * @param startIndex index of the starting point
-     * @param endIndex index of the end
-     * @return copy of the list from starting point to ending point
+     * @param index
+     * @return new dynamic array
+     * returns elements from specified index and after as new dynamic array
      */
-    public T subList(int startIndex, int endIndex) {
+    public T splitSuffix(int index) {
         
     }
+
+
+    /**
+     * 
+     * @param index
+     * @return new dynamic array
+     * returns elements before specified index as new dynamic array
+     */
+    public T splitPrefix(int index) {
+
+    }
+
 
     /**
      * 
