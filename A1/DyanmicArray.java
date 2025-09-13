@@ -2,10 +2,19 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
     T[] myArray;
 
-    // WORK ON CONSTRUCTOR 
+    // WORK ON MAIN CONSTRUCTOR 
     public Array(int length) {
        this.myArray = (T[] new Object [length]);
        this.size = length;
+    }
+
+
+    /**
+     * copy constructor that makes a deep copy
+     * @param dynamicArray
+     */
+    public Array(T[] dynamicArray) {
+       T[] newArray = 
     }
 
     
@@ -91,7 +100,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
      * returns elements from specified index and after as new dynamic array
      */
     public T splitSuffix(int index) {
-        
+
     }
 
 
