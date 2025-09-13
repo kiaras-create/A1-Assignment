@@ -46,7 +46,6 @@ interface IndexAccessADT <T> {
      * 
      * @param element
      * Appends element to end of array
-     * Throws exception if specified indicies are out of bounds
      * @return updated dynamic array
      */
     public T addElement(T element);

@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+// import java.lang.reflect.Array;
 
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
@@ -6,6 +6,10 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     Object[] myArray;
 
 
+    /**
+     * base array
+     * @param size
+     */
     public DynamicArray(int size) {
     this.myArray = new Object[size];
     this.size = size;
@@ -27,9 +31,9 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // ASK IF WRITING ABOUT GENERIC ARRAY OR DEEP ARRAY "MYARRAY"
     /**
      * 
-     * @param index index of element the user is attempting to access
-     * returns element at accessed index
+     * returns element at specific index
      * will throw an exception if specified index is out of bounds
+     * @param index 
      * @return element which was accessed
      */
     public T getEle(int index) {
@@ -74,17 +78,19 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         }
 
 
+
     // CHIASHI
     /**
-     * @param index of placement where user wants to add an element
-     * @param element that will be added to specified index 
+     * 
      * Inserts element in specified index and shifts all other elements accordingly
      * Throws exception if specified indicies are out of bounds
+     * @param index 
+     * @param element 
      * @return updated dynamic array
      */
     public T addElement(int index, T element) {
         if (index > 0 && index < myArray.length) {
-         T[] newArray = new Array(myArray.length + 1);
+         T[] newArray = new DynamicArray(myArray.length + 1);
          for (int i = 0; i < myArray.length - (index-1); i++) {
             newArray[i] = myArray[i];
          }
@@ -92,10 +98,27 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
          for (int i = index; i < myArray.length; i++) {
             newArray[index + i] = myArray[i];
          }
+         return newArray;
         } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
     }
+
+
+     /**
+     * 
+     * Overloaded addElement method that appends element to end of array
+     * @param element 
+     * @return updated dynamic array
+     */
+     public T addElement(T element) {
+        T[] newArray = new DynamicArray(myArray.length + 1);
+        for (int i = 0; i < myArray.length + 1; i++) {
+            newArray[i] = myArray[i];
+        }
+        newArray[myArray.length + 1] = element;
+        return newArray;
+     }
 
 
 
@@ -141,11 +164,22 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // CHIASHI
     /**
      * 
+     * returns elements from specified index and after as new dynamic array
+     * throws exception if specified index is out of bounds
      * @param index
      * @return new dynamic array
-     * returns elements from specified index and after as new dynamic array
      */
     public T splitSuffix(int index) {
+        if (index > 0 && index < myArray.length) {
+            T[] newArray = new DynamicArray(myArray.length - index);
+            for (int i = index; i < myArray.length; i++) {
+                newArray[i-index] = myArray[i];
+            }
+            return newArray;
+
+        } else {
+            throw new IndexOutOfBoundsException("Your index is out of bounds.");
+        }
 
     }
 
@@ -165,13 +199,27 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
+    // NOT DONE
+    // QUESTION ABOUT HOW TO FORMAT ARGUMENT FOR IF STATEMENT
+    // QUESTION ABOUT ARGUMENT FOR "FOR" LOOP
     /**
      * 
+     * removes elements from first index up to other index in current array
+     * throws an exception if specified indicies are out of bounds
      * @param startIndex
      * @param endIndex
      * @return updated dynamic array
      */
     public T deleteList(int startIndex, int endIndex) {
+        if ((startIndex > 0 && startIndex < myArray.length) && (endIndex > 0 && endIndex <= myArray.length)) {
+            T[] newArray = new DynamicArray(myArray.length - (endIndex - startIndex));
+            for (int i = 0; i < startIndex; i++) {
+                newArray[i] = myArray[i];
+            }
+            return newArray;
+        } else {
+            throw new IndexOutOfBoundsException("Your index is out of bounds.");
+        }
         
     }
 
