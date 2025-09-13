@@ -10,6 +10,7 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
 
 
     /**
+     * SPECIAL CONSTRUCTOR ABOUT DYNAMIC ARRAY
      * copy constructor that makes a deep copy
      * @param dynamicArray
      */
