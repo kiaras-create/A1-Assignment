@@ -30,7 +30,7 @@ interface IndexAccessADT <T> {
      * @param arr array which user is passing in
      * @return length of the array
      */
-    public T lenArray(T[] arr);
+    public int lenArray(T[] arr);
 
     /**
      * @param index of placement where user wants to add an element

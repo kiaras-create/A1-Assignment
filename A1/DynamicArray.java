@@ -1,12 +1,14 @@
-public class DyanmicArray<T> implements IndexAccessADT<T> {
+import java.lang.reflect.Array;
 
-    T[] myArray;
+public class DynamicArray<T> implements IndexAccessADT<T> {
 
-    // KIARA
-    // WORK ON MAIN CONSTRUCTOR 
-    public Array(int length) {
-       this.myArray = (T[] new Object [length]);
-       this.size = length;
+    int size; 
+    Object[] myArray;
+
+
+    public DynamicArray(int size) {
+    this.myArray = new Object[size];
+    this.size = size;
     }
 
 
@@ -16,9 +18,9 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
      * copy constructor that makes a deep copy
      * @param dynamicArray
      */
-    public Array(T[] dynamicArray) {
-       T[] newArray = 
-    }
+    // public Array(T[] dynamicArray) {
+    //    T[] newArray = 
+    // }
 
     
     // CHIASHI
@@ -53,15 +55,23 @@ public class DyanmicArray<T> implements IndexAccessADT<T> {
     }
 
 
-    // KIARA
+   
     /**
      * 
      * @param arr array which user is passing in
      * @return length of the array
      */
-    public T lenArray(T[] arr) {
-
-    }
+    
+    @Override
+    public int lenArray(T[] arr) {
+    
+        int counter = 0;
+        for (int i =0; i<arr.length; i++){
+            counter ++;
+        }
+        return counter;
+            
+        }
 
 
     // CHIASHI
