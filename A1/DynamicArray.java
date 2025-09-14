@@ -13,6 +13,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     private T[] allocate(int len) {
         return (T[]) new Object[len];
     }
+
+
     /**
      * base array
      * @param size
@@ -97,7 +99,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public T addElement(int index, T element) {
         if (index > 0 && index < myArray.length) {
-         T[] newArray = new DynamicArray(myArray.length + 1);
+         T[] newArray = new DynamicArray<>(myArray.length + 1);
          for (int i = 0; i < index; i++) {
             newArray[i] = myArray[i];
          }
