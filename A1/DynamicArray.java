@@ -192,18 +192,20 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     }
 
-
-
-    // KIARA
-    /**
+    //KIARA
+     /**
      * 
      * @param index
      * @return new dynamic array
      * returns elements before specified index as new dynamic array
      */
-    public T splitPrefix(int index) {
-
-    }
+    public int splitPrefix(T[] index) {
+       int[]dynamicArray = new int[index];
+        for (int i = 0; i < index; i++ ){
+            dynamicArray[i] = i;
+        }
+         return dynamicArray;
+        }
 
 
 
