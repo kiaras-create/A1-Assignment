@@ -10,8 +10,9 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * base array
      * @param size
      */
+    @SuppressWarnings("unchecked")
     public DynamicArray(int size) {
-    this.myArray = new Object[size];
+    this.myArray =(T[])  new Object[size];
     this.size = size;
     }
 
