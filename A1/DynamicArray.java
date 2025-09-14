@@ -3,17 +3,23 @@
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
-    Object[] myArray;
+    T[] myArray;
 
+    /**
+     * Private utility to do array allocation
+     */
 
+    @SuppressWarnings("unchecked")
+    private T[] allocate(int len) {
+        return (T[]) new Object[len];
+    }
     /**
      * base array
      * @param size
      */
-    @SuppressWarnings("unchecked")
     public DynamicArray(int size) {
-    this.myArray =(T[])  new Object[size];
-    this.size = size;
+        this.myArray= allocate(size);
+        this.size = size;
     }
 
 
