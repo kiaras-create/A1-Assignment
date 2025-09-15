@@ -27,13 +27,13 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     // GROUP TOGETHER
     /**
-     * SPECIAL CONSTRUCTOR ABOUT DYNAMIC ARRAY
-     * copy constructor that makes a deep copy
+     * copy constructor that makes a deep copy and loops through 
      * @param dynamicArray
      */
-    // public Array(T[] dynamicArray) {
-    //    T[] newArray = 
-    // }
+    public DynamicArray(T[] arr) {
+        this.myArray = allocate(size + 1);
+        
+    }
 
     
     // CHIASHI
@@ -113,8 +113,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (index > 0 && index < lenArray(myArray)) {
          DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
          for (int i = 0; i < index; i++) {
-            T myEle = getEle(i);
-            newArray.setEle(i, myEle);
+            // T myEle = getEle(i);
+            newArray.setEle(i, getEle(i));
          }
          newArray.setEle(index, element);
          for (int i = index; i < myArray.length; i++) {
@@ -125,6 +125,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         }
     }
 
+    // NEED COPY CONSTRUCTOR
      /**
      * 
      * Overloaded addElement method that appends element to end of array
