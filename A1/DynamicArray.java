@@ -1,6 +1,6 @@
 // import java.lang.reflect.Array;
 
-import com.apple.laf.AquaButtonBorder.Dynamic;
+// import com.apple.laf.AquaButtonBorder.Dynamic;
 
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
@@ -29,11 +29,15 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     // GROUP TOGETHER
     /**
+     * 
      * copy constructor that makes a deep copy and loops through base array to copy values
      * @param dynamicArray
      */
-    public DynamicArray(T[] arr) {
-        DynamicArray<T> newDynamicArray = new Dynamic 
+    public DynamicArray(T[] arr, int arraySize) {
+        T[] myNewArray = allocate(lenArray(arr) + arraySize);
+        for (int i = 0; i < arraySize; i++) {
+            myNewArray[i] = this.myArray[i];
+        }
 
     }
 
@@ -243,7 +247,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param endIndex
      * @return updated dynamic array
      */
-    public T deleteList(int startIndex, int endIndex) {
+    public DynamicArray<T> deleteList(int startIndex, int endIndex) {
         if ((startIndex > 0 && startIndex < myArray.length) && (endIndex > 0 && endIndex <= myArray.length)) {
             T[] newArray = new DynamicArray(myArray.length - (endIndex - startIndex));
             for (int i = 0; i < startIndex; i++) {
