@@ -33,11 +33,10 @@ interface IndexAccessADT <T> {
     public int lenArray(T[] arr);
 
     /**
-     * @param index of placement where user wants to add an element
-     * @param element that will be added to specified index 
-     * Inserts element in specified index and shifts all other elements accordingly
+     * Inserts element in specified index and shifts subsequent elements to right
      * Throws exception if specified indicies are out of bounds
-     * @return updated dynamic array
+     * @param index 
+     * @param element 
      */
     public void addElement(int index, T element);
 
@@ -45,8 +44,7 @@ interface IndexAccessADT <T> {
     /**
      * 
      * @param element
-     * Appends element to end of array
-     * @return updated dynamic array
+     * Overloaded addElement method that appends element to end of array
      */
     public void addElement(T element);
 
@@ -99,7 +97,7 @@ interface IndexAccessADT <T> {
      * @return new dynamic array
      * returns elements from specified index and after as new dynamic array
      */
-    public T splitSuffix(int index);
+    public IndexAccessADT<T> splitSuffix(int index);
 
 
     /**

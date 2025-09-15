@@ -1,5 +1,7 @@
 // import java.lang.reflect.Array;
 
+import com.apple.laf.AquaButtonBorder.Dynamic;
+
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
@@ -16,7 +18,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     /**
-     * base array
+     * base array constructor
      * @param size
      */
     public DynamicArray(int size) {
@@ -27,12 +29,12 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     // GROUP TOGETHER
     /**
-     * copy constructor that makes a deep copy and loops through 
+     * copy constructor that makes a deep copy and loops through base array to copy values
      * @param dynamicArray
      */
     public DynamicArray(T[] arr) {
-        this.myArray = allocate(size + 1);
-        
+        DynamicArray<T> newDynamicArray = new Dynamic 
+
     }
 
     
@@ -104,7 +106,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // TEST
     /**
      * 
-     * Inserts element in specified index and shifts all other elements accordingly
+     * Inserts element in specified index and shifts subsequent elements to right
      * Throws exception if specified indicies are out of bounds
      * @param index 
      * @param element 
@@ -118,27 +120,27 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
          }
          newArray.setEle(index, element);
          for (int i = index; i < myArray.length; i++) {
-            newArray.setEle(index+i, getEle(i));
+            newArray.setEle(index+1, getEle(i));
         }
         } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
     }
 
-    // NEED COPY CONSTRUCTOR
+
+    // CHIASHI
+    // TEST
      /**
      * 
      * Overloaded addElement method that appends element to end of array
      * @param element 
-     * @return updated dynamic array
      */
      public void addElement(T element) {
-        T[] newArray = new DynamicArray(myArray.length + 1);
+        DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
         for (int i = 0; i < myArray.length; i++) {
-            newArray[i] = myArray[i];
+            newArray.setEle(i, getEle(i));
         }
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        newArray.setEle(lenArray(myArray), element);
      }
 
 
@@ -202,9 +204,9 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param index
      * @return new dynamic array
      */
-    public T splitSuffix(int index) {
+    public DynamicArray<T> splitSuffix(int index) {
         if (index > 0 && index < myArray.length) {
-            T[] newArray = new DynamicArray(myArray.length - index);
+            DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) - index);
             for (int i = index; i < myArray.length; i++) {
                 newArray[i-index] = myArray[i];
             }
