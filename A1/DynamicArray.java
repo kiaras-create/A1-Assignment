@@ -2,8 +2,6 @@
 
 // import com.apple.laf.AquaButtonBorder.Dynamic;
 
-import com.apple.laf.AquaButtonBorder.Dynamic;
-
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
@@ -99,9 +97,20 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     public int lenArray(T[] arr) {
     
         int counter = 0;
-        for (int i =0; i< size; i++){
-            counter ++;
+        try  {
+            while (true) {
+                T temp = arr[counter];
+                counter ++;
+                //System.out.println(temp);
+            } 
+    
+
+        } catch(ArrayIndexOutOfBoundsException e){
+            System.out.println(("Error"));
         }
+       // for (int i =0; i< size; i++){
+            //counter ++;
+        
         return counter;
             
         }
@@ -198,15 +207,26 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * Will remove a dynamic array from the specified indices
      * @return updated dynamic array
      */
-    public T insertArray(T dynamicArray, int index) {
+    public DynamicArray<T> insertArray(T dynamicArray, int index) {
+        if (index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Incorrect Index");
+             }
+        DynamicArray<T> result = new DynamicArray<>(myArray,index);
+        for (int i = 0; i < index; i++ ){
+            result.addElement(this.myArray[i]);
+        }
+        for (int i = index; i <  ){
+
+        }
+       
+         return result;
+        }
         
-    }
+    
 
 
 
     // CHIASHI
-    // NEEDS TO BE TESTED
-    // DONE
     /**
      * 
      * returns elements from specified index and after as new dynamic array
@@ -216,11 +236,11 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public DynamicArray<T> splitSuffix(int index) {
         if (index > 0 && index < myArray.length) {
-            DynamicArray<T> newDynamicArr = new DynamicArray<>(myArray, (lenArray(myArray) - index));
-            for (int i = index; i < lenArray(myArray); i++) {
-                newDynamicArr.setEle(i - index, getEle(i));
+            DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) - index);
+            for (int i = index; i < myArray.length; i++) {
+                newArray[i-index] = myArray[i];
             }
-            return newDynamicArr;
+            return newArray;
 
         } else {
             throw new IndexOutOfBoundsException("Your index is out of bounds.");
@@ -247,23 +267,23 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // QUESTION ABOUT HOW TO FORMAT ARGUMENT FOR IF STATEMENT
     /**
      * 
-     * removes elements from first index up to just before other index in current array
+     * removes elements from first index up to other index in current array
      * throws an exception if specified indicies are out of bounds
      * @param startIndex
      * @param endIndex
      * @return updated dynamic array
      */
     public DynamicArray<T> deleteList(int startIndex, int endIndex) {
-        if ((startIndex > 0 && startIndex < lenArray(myArray)) && (endIndex > 0 && endIndex <= lenArray(myArray))) {
-            DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (lenArray(myArray) - (endIndex - startIndex)));
+        if ((startIndex > 0 && startIndex < myArray.length) && (endIndex > 0 && endIndex <= myArray.length)) {
+            T[] newArray = new DynamicArray(myArray.length - (endIndex - startIndex));
             for (int i = 0; i < startIndex; i++) {
-                updatedDArray.setEle(i, getEle(i));
+                newArray[i] = myArray[i];
             }
             // QUESTION ABOUT INDICIES FOR NEWARRAY ELEMENT
             for (int i = endIndex; i < myArray.length; i++) {
-                updatedDArray[endIndex - startIndex] = myArray[i];
+                newArray[endIndex - startIndex] = myArray[i];
             }
-            return updatedDArray;
+            return newArray;
         } else {
             throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
