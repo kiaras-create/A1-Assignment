@@ -3,7 +3,7 @@
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
-    Object [] myArray;
+    Object[] myArray;
 
 
     /**
@@ -11,8 +11,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param size
      */
     public DynamicArray(int size) {
-    this.myArray = new Object[size];
-    this.size = size;
+        this.myArray= allocate(size);
+        this.size = size;
     }
 
 
@@ -102,7 +102,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public T addElement(int index, T element) {
         if (index > 0 && index < myArray.length) {
-         T[] newArray = new DynamicArray(myArray.length + 1);
+         T[] newArray = new DynamicArray<>(myArray.length + 1);
          for (int i = 0; i < index; i++) {
             newArray[i] = myArray[i];
          }
@@ -207,18 +207,20 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     }
 
-
-
-    // KIARA
-    /**
+    //KIARA
+     /**
      * 
      * @param index
      * @return new dynamic array
      * returns elements before specified index as new dynamic array
      */
-    public T splitPrefix(int index) {
-
-    }
+    public int splitPrefix(T[] index) {
+       int[]dynamicArray = new int[index];
+        for (int i = 0; i < index; i++ ){
+            dynamicArray[i] = i;
+        }
+         return dynamicArray;
+        }
 
 
 
