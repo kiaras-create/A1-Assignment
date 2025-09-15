@@ -238,7 +238,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (index > 0 && index < myArray.length) {
             DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) - index);
             for (int i = index; i < myArray.length; i++) {
-                newArray[i-index] = myArray[i];
+                newArray.setEle(i - index, getEle(i));
             }
             return newArray;
 
