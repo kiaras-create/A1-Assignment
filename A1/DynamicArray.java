@@ -205,6 +205,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
+    // NEEDS TO BE TESTED
+    // DONE
     /**
      * 
      * returns elements from specified index and after as new dynamic array
