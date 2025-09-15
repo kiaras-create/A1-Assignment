@@ -3,7 +3,16 @@
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
-    Object[] myArray;
+    T[] myArray;
+
+    /**
+     * Private utility to do array allocation
+     */
+
+    @SuppressWarnings("unchecked")
+    private T[] allocate(int len) {
+        return (T[]) new Object[len];
+    }
 
 
     /**
@@ -207,19 +216,16 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     }
 
-    //KIARA
-     /**
-     * 
-     * @param index
-     * @return new dynamic array
-     * returns elements before specified index as new dynamic array
-     */
-    public int splitPrefix(T[] index) {
-       int[]dynamicArray = new int[index];
+    public DynamicArray<T> splitPrefix(int index) {
+        if (index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Incorrect Index");
+             }
+        DynamicArray<T> result = new DynamicArray<T>(index);
         for (int i = 0; i < index; i++ ){
-            dynamicArray[i] = i;
+            result.addElement(this.myArray[i]);
         }
-         return dynamicArray;
+       
+         return result;
         }
 
 
