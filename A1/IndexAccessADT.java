@@ -23,7 +23,7 @@ interface IndexAccessADT <T> {
      * will throw an exception if the specified index is out of bounds
      * @return element which was modified
      */
-    public T setEle(int index); 
+    public T setEle(int index, T element); 
 
     /**
      * 

@@ -101,6 +101,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
+    // TEST
     /**
      * 
      * Inserts element in specified index and shifts all other elements accordingly
@@ -112,13 +113,13 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (index > 0 && index < lenArray(myArray)) {
          DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
          for (int i = 0; i < index; i++) {
-            T myEle = getEle(index);
-            setEle(i) = myEle;
+            T myEle = getEle(i);
+            newArray.setEle(i, myEle);
          }
-         newArray[index] = element;
+         newArray.setEle(index, element);
          for (int i = index; i < myArray.length; i++) {
-            newArray[index + i] = myArray[i];
-         }
+            newArray.setEle(index+i, getEle(i));
+        }
         } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
