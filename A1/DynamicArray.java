@@ -107,7 +107,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
-    // TEST
+    // NEED TO TEST
     /**
      * 
      * Inserts element in specified index and shifts subsequent elements to right
@@ -133,7 +133,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
-    // TEST
+    // NEED TO TEST
      /**
      * 
      * Overloaded addElement method that appends element to end of array
