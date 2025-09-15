@@ -107,6 +107,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
+    // DONE
     // NEED TO TEST
     /**
      * 
@@ -133,6 +134,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
+    // DONE
     // NEED TO TEST
      /**
      * 
