@@ -46,7 +46,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return element which was accessed
      */
     public T getEle(int index) {
-      if (index > 0 && index < myArray.length) {
+      if (index > 0 && index < lenArray(myArray)) {
          return myArray[index];
       } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
@@ -107,24 +107,22 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * Throws exception if specified indicies are out of bounds
      * @param index 
      * @param element 
-     * @return updated dynamic array
      */
-    public T addElement(int index, T element) {
-        if (index > 0 && index < myArray.length) {
-         T[] newArray = new DynamicArray<>(myArray.length + 1);
+    public void addElement(int index, T element) {
+        if (index > 0 && index < lenArray(myArray)) {
+         DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
          for (int i = 0; i < index; i++) {
-            newArray[i] = myArray[i];
+            T myEle = getEle(index);
+            setEle(i) = myEle;
          }
          newArray[index] = element;
          for (int i = index; i < myArray.length; i++) {
             newArray[index + i] = myArray[i];
          }
-         return newArray;
         } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
     }
-
 
      /**
      * 
@@ -132,7 +130,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param element 
      * @return updated dynamic array
      */
-     public T addElement(T element) {
+     public void addElement(T element) {
         T[] newArray = new DynamicArray(myArray.length + 1);
         for (int i = 0; i < myArray.length; i++) {
             newArray[i] = myArray[i];

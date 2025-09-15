@@ -39,7 +39,7 @@ interface IndexAccessADT <T> {
      * Throws exception if specified indicies are out of bounds
      * @return updated dynamic array
      */
-    public T addElement(int index, T element);
+    public void addElement(int index, T element);
 
 
     /**
@@ -48,7 +48,7 @@ interface IndexAccessADT <T> {
      * Appends element to end of array
      * @return updated dynamic array
      */
-    public T addElement(T element);
+    public void addElement(T element);
 
 
     /**
