@@ -230,7 +230,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (index < 0 || index > size){
             throw new IndexOutOfBoundsException("Incorrect Index");
              }
-        DynamicArray<T> result = new DynamicArray<T>(index);
+        DynamicArray<T> result = new DynamicArray<>(myArray,index);
         for (int i = 0; i < index; i++ ){
             result.addElement(this.myArray[i]);
         }
