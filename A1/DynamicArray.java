@@ -3,7 +3,7 @@
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
-    Object[] myArray;
+    Object [] myArray;
 
 
     /**
@@ -54,7 +54,19 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * will throw an exception if the specified index is out of bounds
      * @return element which was modified
      */
-    public T setEle(int index) {
+    public T setEle(int index, T newEle) {
+        //Throwing exception if the index's out of bounds
+        if(index < 0 || index > myArray.length){
+            throw new IndexOutOfBoundsException("Your index is out of bounds.");
+        }
+
+        
+        //Saving the old element's index, replacing the old value with the new one, and returns old value's index
+        //Cast and suppress warning
+        @SuppressWarnings("unchecked")
+        T oldEle =  (T) myArray[index];
+        myArray[index] = newEle;
+        return oldEle;
 
     }
 
@@ -141,7 +153,19 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * Will add a the dynamic array to the end of the array
      * @return updated dynamic array
      */
-    public T appendArray(T dynamicArray) {
+    public T[] appendArray(T[] dynamicArray) {
+        DynamicArray<T> newArray =  new DynamicArray<T>(myArray.length + dynamicArray.length);
+
+        for(int i = 0; i < myArray.length; i ++){
+            newArray[i] = dynamicArray[i];
+        }
+
+        for(int i = 0; i < dynamicArray.length; i++){
+            dynamicArray[myArray.length + i] = dynamicArray[1];
+        }
+         
+
+         return dynamicArray;
         
     }
 
