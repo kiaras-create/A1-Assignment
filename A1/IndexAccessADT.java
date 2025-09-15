@@ -80,7 +80,7 @@ interface IndexAccessADT <T> {
      * @param endIndex
      * @return updated dynamic array
      */
-    public T deleteList(int startIndex, int endIndex);
+    public IndexAccessADT<T> deleteList(int startIndex, int endIndex);
 
     /**
      * 

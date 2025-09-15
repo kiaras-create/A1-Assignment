@@ -247,23 +247,23 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     // QUESTION ABOUT HOW TO FORMAT ARGUMENT FOR IF STATEMENT
     /**
      * 
-     * removes elements from first index up to other index in current array
+     * removes elements from first index up to just before other index in current array
      * throws an exception if specified indicies are out of bounds
      * @param startIndex
      * @param endIndex
      * @return updated dynamic array
      */
     public DynamicArray<T> deleteList(int startIndex, int endIndex) {
-        if ((startIndex > 0 && startIndex < myArray.length) && (endIndex > 0 && endIndex <= myArray.length)) {
-            T[] newArray = new DynamicArray(myArray.length - (endIndex - startIndex));
+        if ((startIndex > 0 && startIndex < lenArray(myArray)) && (endIndex > 0 && endIndex <= lenArray(myArray))) {
+            DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (lenArray(myArray) - (endIndex - startIndex)));
             for (int i = 0; i < startIndex; i++) {
-                newArray[i] = myArray[i];
+                updatedDArray.setEle(i, getEle(i));
             }
             // QUESTION ABOUT INDICIES FOR NEWARRAY ELEMENT
             for (int i = endIndex; i < myArray.length; i++) {
-                newArray[endIndex - startIndex] = myArray[i];
+                updatedDArray[endIndex - startIndex] = myArray[i];
             }
-            return newArray;
+            return updatedDArray;
         } else {
             throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
