@@ -2,6 +2,8 @@
 
 // import com.apple.laf.AquaButtonBorder.Dynamic;
 
+import com.apple.laf.AquaButtonBorder.Dynamic;
+
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
     int size; 
@@ -212,11 +214,11 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public DynamicArray<T> splitSuffix(int index) {
         if (index > 0 && index < myArray.length) {
-            DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) - index);
-            for (int i = index; i < myArray.length; i++) {
-                newArray[i-index] = myArray[i];
+            DynamicArray<T> newDynamicArr = new DynamicArray<>(myArray, (lenArray(myArray) - index));
+            for (int i = index; i < lenArray(myArray); i++) {
+                newDynamicArr.setEle(i - index, getEle(i));
             }
-            return newArray;
+            return newDynamicArr;
 
         } else {
             throw new IndexOutOfBoundsException("Your index is out of bounds.");
