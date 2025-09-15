@@ -91,7 +91,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     public int lenArray(T[] arr) {
     
         int counter = 0;
-        for (int i =0; i<arr.length; i++){
+        for (int i =0; i< size; i++){
             counter ++;
         }
         return counter;
