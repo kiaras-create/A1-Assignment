@@ -222,22 +222,34 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * Will remove a dynamic array from the specified indices
      * @return updated dynamic array
      */
-    public DynamicArray<T> insertArray(T dynamicArray, int index) {
+    public DynamicArray<T> insertArray(T[] myDynamicArray, int index) {
         if (index < 0 || index > size){
             throw new IndexOutOfBoundsException("Incorrect Index");
              }
-        DynamicArray<T> result = new DynamicArray<>(myArray,index);
+        
+        int newLength = lenArray(myDynamicArray);
+        int oldLength = lenArray(myArray);
+        int totalLength = newLength + oldLength;
+
+
+        DynamicArray<T> result = new DynamicArray<>(myArray, totalLength);
         for (int i = 0; i < index; i++ ){
             result.addElement(this.myArray[i]);
         }
-        for (int i = index; i <  ){
+        for (int j = 0; j < newLength; j++ ){
+            result.addElement(myDynamicArray[j]);
+
+        }
+       
+        for (int i = index; i < oldLength;  i++ ){
+            result.addElement(this.myArray[i]);
 
         }
        
          return result;
         }
         
-    
+
 
 
 
@@ -253,7 +265,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (index > 0 && index < myArray.length) {
             DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) - index);
             for (int i = index; i < myArray.length; i++) {
-                newArray.setEle(i - index, getEle(i));
+                newArray[i-index] = myArray[i];
             }
             return newArray;
 
