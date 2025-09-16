@@ -65,7 +65,7 @@ interface IndexAccessADT <T> {
      * Will add a the dynamic array to the end of the array
      * @return updated dynamic array
      */
-    public T appendArray(T dynamicArray);
+    public DynamicArray<T> appendArray(DynamicArray<T> appendedArray);
 
     /**
      * 
@@ -90,7 +90,7 @@ interface IndexAccessADT <T> {
      * @param toIndex
      * @return new dynamic array
      */
-    public T extractArray(int fromIndex, int toIndex);
+    public DynamicArray<T> extractArray(int fromIndex, int toIndex);
 
 
     /**

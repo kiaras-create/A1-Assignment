@@ -65,7 +65,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public T setEle(int index, T newEle) {
         //Throwing exception if the index's out of bounds
-        if(index < 0 || index > myArray.length){
+        if(index < 0 || index >= myArray.length){
             throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
 
@@ -150,6 +150,13 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return updated dynamic array
      */
         public T removeElement(int index, T element) {
+            DynamicArray<T> newArray =  new DynamicArray<T>(this.size - 1);
+
+            for(int i = 0; i < index; i++ ){
+                
+            }
+
+
         
     }
 
@@ -160,19 +167,14 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * Will add a the dynamic array to the end of the array
      * @return updated dynamic array
      */
-    public T[] appendArray(T[] dynamicArray) {
-        DynamicArray<T> newArray =  new DynamicArray<T>(myArray.length + dynamicArray.length);
+    public DynamicArray<T> appendArray(DynamicArray<T> appendedArray) {
+        DynamicArray<T> newArray =  new DynamicArray<T>(this.size + appendedArray.size);
 
-        for(int i = 0; i < myArray.length; i ++){
-            newArray[i] = dynamicArray[i];
+        for(int i = 0; i < appendedArray.size; i ++){
+            T value = appendedArray.getEle(i); //getting a variable type T name value that gets the element at that index
+            newArray.setEle(this.size + i, value);
         }
-
-        for(int i = 0; i < dynamicArray.length; i++){
-            dynamicArray[myArray.length + i] = dynamicArray[1];
-        }
-         
-
-         return dynamicArray;
+         return newArray;
         
     }
 
@@ -264,8 +266,20 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param toIndex
      * @return new dynamic array
      */
-    public T extractArray(int fromIndex, int toIndex) {
-        
+    public DynamicArray<T> extractArray(int fromIndex, int toIndex) {
+        //making the new array
+        DynamicArray<T> extractedArray =  new DynamicArray<T>( toIndex - fromIndex);
+
+        //the value i is the value we are starting from, it should be less than the one we want to end at, and increment
+        for(int i = fromIndex; i < toIndex; i ++){
+            T value = getEle(i); //getting a variable type T name value that gets the element at that index
+            extractedArray.setEle(i - fromIndex, value); //let the new array set that element into the array; from the index minus the starting value (this allows the value to be put in the right index position), and place that value there
+
+
+        }
+
+        return extractedArray; //returning array
+
     }
 
 }
