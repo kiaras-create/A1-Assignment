@@ -153,7 +153,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
             DynamicArray<T> newArray =  new DynamicArray<T>(this.size - 1);
 
             for(int i = 0; i < index; i++ ){
-                
+
             }
 
 
@@ -182,6 +182,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     // KIARA
     /**
+     * 
      * 
      * @param index of the list
      * @param dynamicArray that will be removed from the dynamic array
