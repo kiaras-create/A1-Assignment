@@ -283,7 +283,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
     // CHIASHI
-    // DONE
+    // PARTIALLY DONE, SQUISHY ABOUT IF STATEMENT IN FOR LOOP
     // NOT TESTED
     /**
      * 
@@ -295,8 +295,9 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public DynamicArray<T> deleteList(int startIndex, int endIndex) {
         if ((startIndex >= 0 && startIndex < endIndex) && (endIndex > startIndex && endIndex <= lenArray(myArray))) {
-            DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (endIndex - startIndex));
+            DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (lenArray(myArray) - (endIndex - startIndex)));
             for (int i = 0; i < lenArray(myArray); i++) {
+                // SQUISHY PART
                 if ((i < startIndex) || (i >= endIndex)) {
                     updatedDArray.setEle(i, getEle(i));
                 }
