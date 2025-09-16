@@ -171,11 +171,23 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return updated dynamic array
      */
         public T removeElement(int index, T element) {
-            DynamicArray<T> newArray =  new DynamicArray<T>(this.size - 1);
-
-            for(int i = 0; i < index; i++ ){
-
+            if(index < 0 || index >= myArray.length){
+                throw new IndexOutOfBoundsException("Your index is out of bounds.");
             }
+
+            DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) - 1);
+
+            for(int i = 0; i < myArray.length; i++ ){
+                newArray.setEle(i, getEle(i)); //saving the stuff from old array into the same indeces for the new one
+            }
+
+            for (int i = index + 1; i < myArray.length; i++){
+                newArray.setEle(i - 1, getEle(i));
+            }
+
+            this.myArray = newArray.myArray; // this new shelf is my shelf now; not sure if needed
+
+            return element;
 
 
         
