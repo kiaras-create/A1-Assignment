@@ -72,7 +72,7 @@ interface IndexAccessADT <T> {
      * Will remove a dynamic array from the specified indices
      * @return updated dynamic array
      */
-    public T insertArray(T dynamicArray, int index);
+    public IndexAccessADT<T> insertArray(T[] dynamicArray, int index);
 
     /**
      * 
