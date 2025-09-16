@@ -207,7 +207,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
             T value = appendedArray.getEle(i); //getting a variable type T name value that gets the element at that index
             newArray.setEle(this.size + i, value);
         }
-         return newArray;
+         return newArray; 
         
     }
 
@@ -327,7 +327,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public DynamicArray<T> extractArray(int fromIndex, int toIndex) {
         //making the new array
-        DynamicArray<T> extractedArray =  new DynamicArray<T>( toIndex - fromIndex);
+        DynamicArray<T> extractedArray =  new DynamicArray<T>(toIndex - fromIndex);
 
         //the value i is the value we are starting from, it should be less than the one we want to end at, and increment
         for(int i = fromIndex; i < toIndex; i ++){
