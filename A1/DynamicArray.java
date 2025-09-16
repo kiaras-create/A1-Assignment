@@ -294,20 +294,24 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return updated dynamic array
      */
     public DynamicArray<T> deleteList(int startIndex, int endIndex) {
-        if ((startIndex >= 0 && startIndex < endIndex) && (endIndex > startIndex && endIndex <= lenArray(myArray))) {
-            DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (lenArray(myArray) - (endIndex - startIndex)));
-            for (int i = 0; i < lenArray(myArray); i++) {
-                // SQUISHY PART
-                if ((i < startIndex) || (i >= endIndex)) {
-                    updatedDArray.setEle(i, getEle(i));
+        if ((startIndex >= 0) && (startIndex < endIndex)) {
+            if (endIndex > startIndex && endIndex <= lenArray(myArray)) {
+                DynamicArray<T> updatedDArray = new DynamicArray<>(myArray, (lenArray(myArray) - (endIndex - startIndex)));
+                for (int i = 0; i < lenArray(myArray); i++) {
+                    // SQUISHY PART
+                    if ((i < startIndex) || (i >= endIndex)) {
+                        updatedDArray.setEle(i, getEle(i));
+                    }
                 }
+                return updatedDArray;
+            } else {
+                throw new IndexOutOfBoundsException("Your end index is out of bounds.");
             }
-            return updatedDArray;
         } else {
-            throw new IndexOutOfBoundsException("Your index is out of bounds.");
-        }
-        
+            throw new IndexOutOfBoundsException("Your start index is out of bounds.");
+        } 
     }
+ 
 
 
     // VICTORIA
