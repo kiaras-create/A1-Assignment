@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DynamicArrayTests {
 
@@ -95,6 +96,8 @@ public class DynamicArrayTests {
         compareToString(empty.append(empty), "");
     }
 
+
+
     // ~*~*~*~*~ Add Extract Tests Below ~*~*~*~*~
 
 //    /**
@@ -147,6 +150,25 @@ public class DynamicArrayTests {
     // ~*~*~*~*~ Write More Tests Below ~*~*~*~*~
 
     // write tests for the other methods here
+
+
+    // getEle method tests
+
+    /**
+     * Tests that element at specific index can be accessed 
+     * Returns accessed element
+     */
+    @Test
+    public void testGetMethod() {
+       assertEquals(a1.getEle(1), 'a');
+    }
+
+    public void testGetMethodException() {
+
+    }
+
+
+
 }
 
 
