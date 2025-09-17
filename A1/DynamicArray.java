@@ -1,6 +1,3 @@
-// import java.lang.reflect.Array;
-
-// import com.apple.laf.AquaButtonBorder.Dynamic;
 
 public class DynamicArray<T> implements IndexAccessADT<T> {
 
