@@ -27,7 +27,6 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     }
 
 
-    // GROUP TOGETHER
     /**
      * 
      * copy constructor that makes a deep copy and loops through base array to copy values
@@ -41,9 +40,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     }
 
-    
-    // CHIASHI
-    // ASK IF WRITING ABOUT GENERIC ARRAY OR DEEP ARRAY "MYARRAY"
+
     /**
      * 
      * returns element at specific index
@@ -61,7 +58,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     }
 
     
-    // VICTORIA
+
     /**
      * 
      * @param index of element the user is attempting to modify
@@ -117,9 +114,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
 
-    // CHIASHI
-    // DONE
-    // NEED TO TEST
+
     /**
      * 
      * Inserts element in specified index and shifts subsequent elements to right
@@ -129,40 +124,42 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public void addElement(int index, T element) {
         if (index >= 0 && index < lenArray(myArray)) {
-         DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
+         DynamicArray<T> temp = new DynamicArray<T>(lenArray(myArray) + 1);
          for (int i = 0; i < index; i++) {
             // T myEle = getEle(i);
-            newArray.setEle(i, getEle(i));
+            temp.setEle(i, getEle(i));
          }
-         newArray.setEle(index, element);
-         for (int i = index; i < myArray.length; i++) {
-            newArray.setEle(index+1, getEle(i));
-        }
+         temp.setEle(index, element);
+         for (int i = index; i < lenArray(this.myArray); i++) {
+            temp.setEle(i+1, getEle(i));
+        } 
+        // reassigns this.myArray (base array) to the same array of temp
+        this.myArray = temp.myArray;
         } else {
          throw new IndexOutOfBoundsException("Your index is out of bounds.");
         }
     }
 
 
-    // CHIASHI
-    // DONE
-    // NEED TO TEST
+
      /**
      * 
      * Overloaded addElement method that appends element to end of array
      * @param element 
      */
      public void addElement(T element) {
-        DynamicArray<T> newArray = new DynamicArray<T>(lenArray(myArray) + 1);
-        for (int i = 0; i < myArray.length; i++) {
-            newArray.setEle(i, getEle(i));
+        DynamicArray<T> temp = new DynamicArray<T>(lenArray(myArray) + 1);
+        for (int i = 0; i < lenArray(myArray); i++) {
+            temp.setEle(i, getEle(i));
         }
-        newArray.setEle(lenArray(myArray), element);
+        temp.setEle(lenArray(myArray), element);
+        // reassigns this.myArray (base array) to the same array of temp
+        this.myArray = temp.myArray;
      }
 
 
 
-    // VICTORIA
+
     /**
      * 
      * @param index of element user wants to remove
@@ -177,11 +174,11 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
             DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) - 1);
 
-            for(int i = 0; i < myArray.length; i++ ){
+            for(int i = 0; i < lenArray(myArray); i++ ){
                 newArray.setEle(i, getEle(i)); //saving the stuff from old array into the same indeces for the new one
             }
 
-            for (int i = index + 1; i < myArray.length; i++){
+            for (int i = index + 1; i < lenArray(myArray); i++){
                 newArray.setEle(i - 1, getEle(i));
             }
 
@@ -194,7 +191,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     }
 
 
-    // VICTORIA
+
     /**
      * @param dynamicArray that will be concatenated to the end of the array
      * Will add a the dynamic array to the end of the array
@@ -213,7 +210,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
 
-    // KIARA
+
     /**
      * 
      * 
@@ -253,9 +250,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
 
-    // CHIASHI
-    // DONE
-    // NOT TESTED
+
     /**
      * 
      * returns elements from specified index and after as new dynamic array
@@ -297,9 +292,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
 
 
-    // CHIASHI
-    // PARTIALLY DONE, SQUISHY ABOUT IF STATEMENT IN FOR LOOP
-    // NOT TESTED
+
     /**
      * 
      * removes elements from first index up to other index in current array
@@ -329,7 +322,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
  
 
 
-    // VICTORIA
+
     /**
      * 
      * @param fromIndex
