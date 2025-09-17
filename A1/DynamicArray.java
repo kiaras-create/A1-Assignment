@@ -38,7 +38,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     }
 
 
-    /**
+
+     /**
      * 
      * returns element at specific index
      * will throw an exception if specified index is out of bounds
@@ -46,12 +47,15 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return element which was accessed
      */
     public T getEle(int index) {
-      if (index > 0 && index < lenArray(myArray)) {
-         return myArray[index];
-      } else {
-         throw new IndexOutOfBoundsException("Your index is out of bounds.");
-      }
-
+        if (index >= 0) {
+            if (index < lenArray(myArray)) {
+                return myArray[index];
+            } else {
+                throw new IndexOutOfBoundsException("Your index is greater than the array length. It is out of bounds.");
+            }
+        } else {
+            throw new IndexOutOfBoundsException("Your index is less than 0. It is out of bounds."); 
+        }
     }
 
     
