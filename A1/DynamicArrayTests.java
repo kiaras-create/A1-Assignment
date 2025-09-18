@@ -200,6 +200,14 @@ public class DynamicArrayTests {
 
     // add method tests
 
+    /**
+     * tests that element is added to array at correct index
+     */
+    @Test
+    public void testAddElementMethod() {
+
+    }
+
    
    
 }
