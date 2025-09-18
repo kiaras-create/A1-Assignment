@@ -208,7 +208,7 @@ public class DynamicArrayTests{
     public void testAddElementMethod() {
 
     }
-   
+
     
     /**
      * Tests the second add method, where you can add an element at any index
@@ -271,6 +271,53 @@ public class DynamicArrayTests{
 
       
     }
+
+
+    // addElement method with index parameter tests 
+
+    /**
+     * tests that element is added to array at correct index
+     */
+    @Test
+    public void testAddElementMethod() {
+
+    }
+
+
+    // addElement method with no index parameter tests 
+
+    /**
+     * tests that element is added to end of array
+     */
+    @Test
+    public void testAddEleMethodWithNoIndex() {
+        a1.addElement('g');
+        assertEquals(a1.getEle(7), 'g');
+
+    }
+
+    /**
+     * tests that element is added to end of array
+     */
+    @Test
+    public void testAddEleMethodWithNoIndex2() {
+        s.addElement('v');
+        assertEquals(a1.getEle(1), 'v');
+
+    }
+
+    /**
+     * tests that element is added to end of array
+     */
+    @Test
+    public void testAddEleMethodWithNoIndex3() {
+        empty.addElement('r');
+        assertEquals(a1.getEle(0), 'r');
+
+    }
+
+
+
 }
 
 
