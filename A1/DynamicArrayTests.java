@@ -209,9 +209,59 @@ public class DynamicArrayTests {
 
     }
 
-   
-   
+    @Test
+    public void testExtractMethodException(){
+           ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(-1, 10);
+        });
+        assertTrue(ex.getMessage().contains("Start index is negative and is out of bounds"));
+    }
+
+    @Test
+    public void testExtractUpperBound(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(1, 10);
+
+
+        });
+        assertTrue(ex.getMessage().contains("End index (toIndex) is out of bounds"));
+    }
+
+    @Test
+    public void testExtractLowerBound(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(8, 10);
+
+        });
+        assertTrue(ex.getMessage().contains("Start index (fromIndex) is too large"));
+    }
+
+    @Test
+    public void TestExtractNegativeUpper(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(0, -1);
+
+        });
+        assertTrue(ex.getMessage().contains("End index (toIndex) is negative"));
+    }
+
+    @Test
+    public void textExtractUpperSize(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(4, 3);
+
+
+        });
+        assertTrue(ex.getMessage().contains("Start index (fromIndex) is larger than end index(toIndex)"));
+
+      
+    }
 }
+
+
+   
+   
+
 
 
 
