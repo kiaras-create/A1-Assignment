@@ -163,10 +163,42 @@ public class DynamicArrayTests {
        assertEquals(a1.getEle(1), 'a');
     }
 
-    public void testGetMethodException() {
-
+    /**
+     * Tests that element at specific index can be accessed 
+     * Returns accessed element
+     */
+    @Test
+    public void testGetMethod2() {
+       assertEquals(a2.getEle(3), 'z');
     }
 
+
+    /**
+     * tests that method throws expected exception when index is greater than array length
+     */
+    @Test
+    public void testGetMethodThrowsExpectedException() {
+        IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            a1.getEle(7);
+        });
+
+        assertEquals("Your index is greater than the array length. It is out of bounds.", ex.getMessage());
+    }
+
+    /**
+     * tests that method throws expected exception when index is less than 0
+     */
+    @Test
+    public void testGetMethodThrowsExpectedException2() {
+        IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            a1.getEle(-1);
+        });
+
+        assertEquals("Your index is less than 0. It is out of bounds.", ex.getMessage());
+    }
+
+
+    // add method tests
 
    
    
