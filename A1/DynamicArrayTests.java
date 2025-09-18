@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DynamicArrayTests {
+public class DynamicArrayTests{
 
     private DynamicArray<Character> a1;
     private DynamicArray<Character> a2;
@@ -207,6 +207,21 @@ public class DynamicArrayTests {
     @Test
     public void testAddElementMethod() {
 
+    }
+   
+    
+    /**
+     * Tests the second add method, where you can add an element at any index
+     */
+    @Test
+    public void testAddElementInMiddleMethod(){
+        a1.addElement(1, 'Z');
+
+        assertEquals(4, a1.lenArray(a1.myArray));
+        assertEquals("A", a1.getEle(0));
+        assertEquals("B", a1.getEle(1));
+        assertEquals("Z", a1.getEle(2));
+        assertEquals("C", a1.getEle(3));
     }
 
     @Test

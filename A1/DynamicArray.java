@@ -76,8 +76,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         
         //Saving the old element's index, replacing the old value with the new one, and returns old value's index
         //Cast and suppress warning
-        @SuppressWarnings("unchecked")
-        T oldEle =  (T) myArray[index];
+    
+        T oldEle =  myArray[index];
         myArray[index] = newEle;
         return oldEle;
 
@@ -178,6 +178,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
             DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) - 1);
 
+            T removed = getEle(index);
+
             for(int i = 0; i < lenArray(myArray); i++ ){
                 newArray.setEle(i, getEle(i)); //saving the stuff from old array into the same indeces for the new one
             }
@@ -188,7 +190,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
             this.myArray = newArray.myArray; // this new shelf is my shelf now; not sure if needed
 
-            return element;
+            return removed;
 
 
         
@@ -202,11 +204,14 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @return updated dynamic array
      */
     public DynamicArray<T> appendArray(DynamicArray<T> appendedArray) {
-        DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) + appendedArray.size);
+        DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) + appendedArray.lenArray(appendedArray.myArray));
 
-        for(int i = 0; i < appendedArray.size; i ++){
+        for(int i = 0; i < appendedArray.lenArray(appendedArray.myArray); i++){ //copying array
+            newArray.setEle(i, getEle(i));
+        }
+        for(int i = 0; i < appendedArray.lenArray(myArray); i ++){
             T value = appendedArray.getEle(i); //getting a variable type T name value that gets the element at that index
-            newArray.setEle(this.size + i, value);
+            newArray.setEle(lenArray(appendedArray.myArray) + i, value);
         }
          return newArray; 
         
