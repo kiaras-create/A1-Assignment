@@ -29,7 +29,8 @@ public class DynamicArrayTests {
     public DynamicArray<Character> stringToArray(String s) {
         DynamicArray<Character> result = new DynamicArray<Character>(s.length());
         for (int i = 0; i < s.length(); i++) {
-            result.add(i, s.charAt(i));
+            result.addElement(i, s.charAt(i));
+            
         }
         return result;
     }
@@ -47,7 +48,7 @@ public class DynamicArrayTests {
      */
     public void compareToString(DynamicArray<Character> arr, String s) {
         for (int i = 0; i < arr.size(); i++) {
-            assertEquals("["+s+"] Elements are equal at index " + i, arr.get(i).charValue(), s.charAt(i));
+            assertEquals("["+s+"] Elements are equal at index " + i, arr.getEle(i).charValue(), s.charAt(i));
         }
     }
 
