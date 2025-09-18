@@ -336,6 +336,27 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      */
     public DynamicArray<T> extractArray(int fromIndex, int toIndex) {
         //making the new array
+
+        if (fromIndex < 0) {
+            throw new ArrayIndexOutOfBoundsException("Start index is negative and is out of bounds");
+        }
+
+        if (fromIndex > lenArray(myArray)){
+            throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is too large");
+        }
+
+        if (toIndex < 0){
+            throw new ArrayIndexOutOfBoundsException("End index (toIndex) is negative");
+
+        }
+
+        if (toIndex > lenArray(myArray)){
+            throw new ArrayIndexOutOfBoundsException("End index (toIndex) is out of bounds");
+        }
+
+        if (fromIndex > toIndex){
+            throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is larger than end index(toIndex)");
+        }
         DynamicArray<T> extractedArray =  new DynamicArray<T>(toIndex - fromIndex);
 
         //the value i is the value we are starting from, it should be less than the one we want to end at, and increment
