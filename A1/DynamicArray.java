@@ -87,6 +87,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
    
     /**
      * 
+     * finds length of array
      * @param arr array which user is passing in
      * @return length of the array
      */
@@ -328,6 +329,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     /**
      * 
+     * grabs elements from one index up to just before another
      * @param fromIndex where extraction should start from
      * @param toIndex where extraction should end
      * @return new dynamic array
