@@ -16,7 +16,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     /**
      * base array constructor
-     * @param size
+     * @param size of how large the size of the array should be
      */
     public DynamicArray(int size) {
         this.myArray= allocate(size);
@@ -27,7 +27,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     /**
      * 
      * copy constructor that makes a deep copy and loops through base array to copy values
-     * @param dynamicArray
+     * @param dynamicArray dynamic array being copied
      */
     public DynamicArray(T[] arr, int arraySize) {
         T[] myNewArray = allocate(arraySize);
@@ -43,7 +43,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * 
      * returns element at specific index
      * will throw an exception if specified index is out of bounds
-     * @param index 
+     * @param index of element user is trying to retrieve
      * @return element which was accessed
      */
     public T getEle(int index) {
@@ -118,8 +118,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * 
      * Inserts element in specified index and shifts subsequent elements to right
      * Throws exception if specified indicies are out of bounds
-     * @param index 
-     * @param element 
+     * @param index for where element needs to be added
+     * @param element specified element
      */
     public void addElement(int index, T element) {
         if (index >= 0) {
@@ -148,7 +148,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      /**
      * 
      * Overloaded addElement method that appends element to end of array
-     * @param element 
+     * @param element specified element
      */
      public void addElement(T element) {
         DynamicArray<T> temp = new DynamicArray<T>(lenArray(myArray) + 1);
@@ -255,7 +255,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * 
      * returns elements from specified index and after as new dynamic array
      * throws exception if specified index is out of bounds
-     * @param index
+     * @param index of where array is going to be split including index
      * @return new dynamic array
      */
     public DynamicArray<T> splitSuffix(int index) {
@@ -277,7 +277,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     /**
      * 
-     * @param index
+     * @param index of where array is going to be split
      * @return new dynamic array
      * returns elements before specified index as new dynamic array
      */
@@ -300,8 +300,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * 
      * removes elements from first index up to other index in current array
      * throws an exception if specified indicies are out of bounds
-     * @param startIndex
-     * @param endIndex
+     * @param startIndex where deletion should start
+     * @param endIndex where deletion should end
      * @return updated dynamic array
      */
     public DynamicArray<T> deleteList(int startIndex, int endIndex) {
@@ -328,8 +328,8 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
     /**
      * 
-     * @param fromIndex
-     * @param toIndex
+     * @param fromIndex where extraction should start from
+     * @param toIndex where extraction should end
      * @return new dynamic array
      */
     public DynamicArray<T> extractArray(int fromIndex, int toIndex) {
