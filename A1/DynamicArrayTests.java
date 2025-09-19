@@ -60,8 +60,8 @@ public class DynamicArrayTests{
      */
     @Test
     public void testAppendStandard() {
-        compareToString(a1.append(a2), "abcdefwxyz");
-        compareToString(a2.append(a1), "wxyzabcdef");
+        compareToString(a1.appendArray(a2), "abcdefwxyz");
+        compareToString(a2.appendArray(a1), "wxyzabcdef");
     }
 
     /**
@@ -70,8 +70,8 @@ public class DynamicArrayTests{
      */
     @Test
     public void testAppendSelf() {
-        compareToString(a1.append(a1), "abcdefabcdef");
-        compareToString(a2.append(a2), "wxyzwxyz");
+        compareToString(a1.appendArray(a1), "abcdefabcdef");
+        compareToString(a2.appendArray(a2), "wxyzwxyz");
     }
 
     /**
@@ -81,9 +81,9 @@ public class DynamicArrayTests{
      */
     @Test
     public void testAppendSingle() {
-    compareToString(a1.append(s),"abcdefs");
-    compareToString(s.append(a1),"sabcdef");
-    compareToString(s.append(s),"ss");
+    compareToString(a1.appendArray(s),"abcdefs");
+    compareToString(s.appendArray(a1),"sabcdef");
+    compareToString(s.appendArray(s),"ss");
     }
 
     /**
@@ -92,9 +92,9 @@ public class DynamicArrayTests{
      */
     @Test
     public void testAppendEmpty() {
-        compareToString(a1.append(empty), "abcdef");
-        compareToString(empty.append(a1), "abcdef");
-        compareToString(empty.append(empty), "");
+        compareToString(a1.appendArray(empty), "abcdef");
+        compareToString(empty.appendArray(a1), "abcdef");
+        compareToString(empty.appendArray(empty), "");
     }
 
 
