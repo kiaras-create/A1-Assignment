@@ -102,44 +102,101 @@ public class DynamicArrayTests{
     // ~*~*~*~*~ Add Extract Tests Below ~*~*~*~*~
 
 //    /**
-//     * Tests that ...
+//     * Tests that if the entire array is being extracted 
 //     */
-//    @Test
-//    public void testExtractStandard() {
-//        // fill in standard cases
-//    }
-//
-//    /**
-//     * Tests that ..
-//     */
-//    @Test
-//    public void testExtractEntire() {
-//        // fill in extracting the entire array
-//    }
-//
-//    /**
-//     * Tests that ..
-//     */
-//    @Test
-//    public void testExtractZero() {
-//        // fill in extracting zero elements
-//    }
-//
-//    /**
-//     * Tests that ..
-//     */
-//    @Test
-//    public void testExtractEmpty() {
-//        // fill in extracting from an empty array
-//    }
+   @Test
+   public void testExtractEntire() {
+       DynamicArray<Character> extracted = a1.extractArray(0, 6);
+       assertEquals("6", extracted.lenArray(extracted.myArray));
+   }
+    /**
+    * Tests that user attempts to extract zero elements
+    */
+    @Test
+    public void testExtractZero() { 
+        DynamicArray<Character> extracted = empty.extractArray(0, 0);
+        assertEquals(0, extracted.lenArray(extracted.myArray));
+    }
+
+
+    /**
+    * Tests that user attempts to extract an empty array  
+    */
+    @Test
+    public void TestExtractNone(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(0, 5);
+        });
+       
+        assertTrue(ex.getMessage().contains("Array is empty"));
+    }
+
+
 
     /**
      * Tests that extract throws the proper exception
      * when called on invalid indices
      */
+
+    @Test
+    public void testExtractMethodException(){
+           ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(-1, 10);
+        });
+        assertTrue(ex.getMessage().contains("Start index is negative and is out of bounds"));
+    }
+    /**
+     * Test if the upper bound is too large
+     */
+    @Test
+    public void testExtractUpperBound(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(1, 10);
+
+
+        });
+        assertTrue(ex.getMessage().contains("End index (toIndex) is out of bounds"));
+    }
+    /**
+     * Test if the lower bound is too large
+     */
+    @Test
+    public void testExtractLowerBound(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(9, 11);
+
+        });
+        assertTrue(ex.getMessage().contains("Start index (fromIndex) is too large"));
+    }
+    /**
+     * Tests if the upper bound is negative
+     */
+    @Test
+    public void TestExtractNegativeUpper(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(0, -1);
+
+        });
+        assertTrue(ex.getMessage().contains("End index (toIndex) is negative"));
+    }
+    /**
+     * Tests if the upper bound is smaller than lower boudn
+     */
+    @Test
+    public void textExtractUpperSize(){
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            a1.extractArray(4, 3);
+
+
+        });
+        assertTrue(ex.getMessage().contains("Start index (fromIndex) is larger than end index(toIndex)"));
+
+      
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void testExtractBounds() {
-        DynamicArray<Character> extract = a1.extract(-1, 5);
+        DynamicArray<Character> extract = a1.extractArray(-1, 5);
         // More bounds that you can check:
         // low index is negative => throws ArrayIndexOutOfBoundsException
         // high index is greater than array length => throws ArrayIndexOutOfBoundsException
@@ -224,53 +281,7 @@ public class DynamicArrayTests{
         assertEquals("C", a1.getEle(3));
     }
 
-    @Test
-    public void testExtractMethodException(){
-           ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(-1, 10);
-        });
-        assertTrue(ex.getMessage().contains("Start index is negative and is out of bounds"));
-    }
 
-    @Test
-    public void testExtractUpperBound(){
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(1, 10);
-
-
-        });
-        assertTrue(ex.getMessage().contains("End index (toIndex) is out of bounds"));
-    }
-
-    @Test
-    public void testExtractLowerBound(){
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(8, 10);
-
-        });
-        assertTrue(ex.getMessage().contains("Start index (fromIndex) is too large"));
-    }
-
-    @Test
-    public void TestExtractNegativeUpper(){
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(0, -1);
-
-        });
-        assertTrue(ex.getMessage().contains("End index (toIndex) is negative"));
-    }
-
-    @Test
-    public void textExtractUpperSize(){
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(4, 3);
-
-
-        });
-        assertTrue(ex.getMessage().contains("Start index (fromIndex) is larger than end index(toIndex)"));
-
-      
-    }
 
 
     // addElement method with index parameter tests 
