@@ -256,16 +256,14 @@ public class DynamicArrayTests{
     }
 
 
-    // add method tests
-
- 
+    // addElement method with index parameter tests 
 
     
     /**
-     * Tests the second add method, where you can add an element at any index
+     * Tests the add method, where you can add an element at any index
      */
     @Test
-    public void testAddElementInMiddleMethod(){
+    public void testAddElementWithIndex(){
         a1.addElement(1, 'Z');
 
         assertEquals(4, a1.lenArray(a1.myArray));
@@ -276,15 +274,32 @@ public class DynamicArrayTests{
     }
 
 
-
-
-    // addElement method with index parameter tests 
-
     /**
-     * tests that element is added to array at correct index
+     * Tests that method throws exception when index where element is added is less than 0
      */
     @Test
-    public void testAddElementMethod() {
+    public void testAddMethodThrowsException1() {
+        IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+        a1.addElement(-1, 'z');
+
+        });
+
+        assertEquals("Your index is less than 0. It is out of bounds.", ex.getMessage());
+
+    }
+
+
+    /**
+     * Tests that method throws exception when index where element is added is greater than array length
+     */
+    @Test
+    public void testAddMethodThrowsException2() {
+        IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+        a2.addElement(6, 'z');
+
+        });
+
+        assertEquals("Your index is greater than the array length. It is out of bounds", ex.getMessage());
 
     }
 
@@ -312,7 +327,7 @@ public class DynamicArrayTests{
     }
 
     /**
-     * tests that element is added to end of array
+     * tests that element is added to end of empty array
      */
     @Test
     public void testAddEleMethodWithNoIndex3() {
