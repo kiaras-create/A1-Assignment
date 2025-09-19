@@ -362,8 +362,14 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         if (fromIndex > toIndex){
             throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is larger than end index(toIndex)");
         }
+
+         if (lenArray(myArray)==0){
+            throw new ArrayIndexOutOfBoundsException("Array is empty");
+        }
+
         DynamicArray<T> extractedArray =  new DynamicArray<T>(toIndex - fromIndex);
 
+       
         //the value i is the value we are starting from, it should be less than the one we want to end at, and increment
         for(int i = fromIndex; i < toIndex; i ++){
             T value = getEle(i); //getting a variable type T name value that gets the element at that index
