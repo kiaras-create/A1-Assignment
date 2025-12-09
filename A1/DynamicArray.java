@@ -208,12 +208,12 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     public DynamicArray<T> appendArray(DynamicArray<T> appendedArray) {
         DynamicArray<T> newArray =  new DynamicArray<T>(size() + appendedArray.size());
 
-        for(int i = 0; i < appendedArray.size(); i++){ //copying array
-            newArray.setEle(i, get(i));
+        for(int i = 0; i < this.size(); i++){ //copying array
+            newArray.setEle(i, this.get(i));
         }
         for(int i = 0; i < appendedArray.size(); i ++){
             T value = appendedArray.get(i); //getting a variable type T name value that gets the element at that index
-            newArray.setEle(size() + i, value);
+            newArray.setEle(this.size() + i, appendedArray.get(i));
         }
          return newArray; 
         
