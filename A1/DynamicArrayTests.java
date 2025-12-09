@@ -39,7 +39,7 @@ public class DynamicArrayTests{
      * Compares the sizes of a DynamicArray<Character> and a string
      */
     public void compareSize(DynamicArray<Character> arr, String s){
-        assertEquals("["+s+"] Array lengths are equal", arr.size()), s.length());
+        assertEquals("["+s+"] Array lengths are equal", arr.size(), s.length());
     }
 
     /**
@@ -107,7 +107,7 @@ public class DynamicArrayTests{
    @Test
    public void testExtractEntire() {
        DynamicArray<Character> extracted = a1.extractArray(0, 6);
-       assertEquals("6", extracted.size(extracted.myArray));
+       assertEquals("6", extracted.size());
    }
     /**
     * Tests that user attempts to extract zero elements
@@ -115,7 +115,7 @@ public class DynamicArrayTests{
     @Test
     public void testExtractZero() { 
         DynamicArray<Character> extracted = empty.extractArray(0, 0);
-        assertEquals(0, extracted.size(extracted.myArray));
+        assertEquals(0, extracted.size());
     }
 
 
@@ -266,7 +266,7 @@ public class DynamicArrayTests{
     public void testAddElementWithIndex(){
         a1.addElement(1, 'Z');
 
-        assertEquals(4, a1.size(a1.myArray));
+        assertEquals(4, a1.size());
         assertEquals("A", a1.get(0));
         assertEquals("B", a1.get(1));
         assertEquals("Z", a1.get(2));

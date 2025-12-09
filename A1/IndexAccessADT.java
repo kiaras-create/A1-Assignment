@@ -30,7 +30,7 @@ interface IndexAccessADT <T> {
      * @param arr array which user is passing in
      * @return length of the array
      */
-    public int size(T[] arr);
+    public int size();
 
     /**
      * Inserts element in specified index and shifts subsequent elements to right
