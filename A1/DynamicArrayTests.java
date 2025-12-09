@@ -39,7 +39,7 @@ public class DynamicArrayTests{
      * Compares the sizes of a DynamicArray<Character> and a string
      */
     public void compareSize(DynamicArray<Character> arr, String s){
-        assertEquals("["+s+"] Array lengths are equal", arr.size(), s.length());
+        assertEquals("["+s+"] Array lengths are equal", arr.size()), s.length());
     }
 
     /**
@@ -48,7 +48,7 @@ public class DynamicArrayTests{
      */
     public void compareToString(DynamicArray<Character> arr, String s) {
         for (int i = 0; i < arr.size(); i++) {
-            assertEquals("["+s+"] Elements are equal at index " + i, arr.getEle(i).charValue(), s.charAt(i));
+            assertEquals("["+s+"] Elements are equal at index " + i, arr.get(i).charValue(), s.charAt(i));
         }
     }
 
@@ -107,7 +107,7 @@ public class DynamicArrayTests{
    @Test
    public void testExtractEntire() {
        DynamicArray<Character> extracted = a1.extractArray(0, 6);
-       assertEquals("6", extracted.lenArray(extracted.myArray));
+       assertEquals("6", extracted.size(extracted.myArray));
    }
     /**
     * Tests that user attempts to extract zero elements
@@ -115,7 +115,7 @@ public class DynamicArrayTests{
     @Test
     public void testExtractZero() { 
         DynamicArray<Character> extracted = empty.extractArray(0, 0);
-        assertEquals(0, extracted.lenArray(extracted.myArray));
+        assertEquals(0, extracted.size(extracted.myArray));
     }
 
 
@@ -218,7 +218,7 @@ public class DynamicArrayTests{
      */
     @Test
     public void testGetMethod() {
-       assertEquals(a1.getEle(1), 'a');
+       assertEquals(a1.get(1), 'a');
     }
 
     /**
@@ -227,7 +227,7 @@ public class DynamicArrayTests{
      */
     @Test
     public void testGetMethod2() {
-       assertEquals(a2.getEle(3), 'z');
+       assertEquals(a2.get(3), 'z');
     }
 
 
@@ -237,7 +237,7 @@ public class DynamicArrayTests{
     @Test
     public void testGetMethodThrowsExpectedException() {
         IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
-            a1.getEle(7);
+            a1.get(7);
         });
 
         assertEquals("Your index is greater than the array length. It is out of bounds.", ex.getMessage());
@@ -249,7 +249,7 @@ public class DynamicArrayTests{
     @Test
     public void testGetMethodThrowsExpectedException2() {
         IndexOutOfBoundsException ex = assertThrows(IndexOutOfBoundsException.class, () -> {
-            a1.getEle(-1);
+            a1.get(-1);
         });
 
         assertEquals("Your index is less than 0. It is out of bounds.", ex.getMessage());
@@ -266,11 +266,11 @@ public class DynamicArrayTests{
     public void testAddElementWithIndex(){
         a1.addElement(1, 'Z');
 
-        assertEquals(4, a1.lenArray(a1.myArray));
-        assertEquals("A", a1.getEle(0));
-        assertEquals("B", a1.getEle(1));
-        assertEquals("Z", a1.getEle(2));
-        assertEquals("C", a1.getEle(3));
+        assertEquals(4, a1.size(a1.myArray));
+        assertEquals("A", a1.get(0));
+        assertEquals("B", a1.get(1));
+        assertEquals("Z", a1.get(2));
+        assertEquals("C", a1.get(3));
     }
 
 
@@ -312,7 +312,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex() {
         a1.addElement('g');
-        assertEquals(a1.getEle(7), 'g');
+        assertEquals(a1.get(7), 'g');
 
     }
 
@@ -322,7 +322,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex2() {
         s.addElement('v');
-        assertEquals(a1.getEle(1), 'v');
+        assertEquals(a1.get(1), 'v');
 
     }
 
@@ -332,7 +332,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex3() {
         empty.addElement('r');
-        assertEquals(a1.getEle(0), 'r');
+        assertEquals(a1.get(0), 'r');
 
     }
 
