@@ -107,7 +107,7 @@ public class DynamicArrayTests{
    @Test
    public void testExtractEntire() {
        DynamicArray<Character> extracted = a1.extractArray(0, 6);
-       assertEquals("6", extracted.size());
+       assertEquals(6, extracted.size());
    }
     /**
     * Tests that user attempts to extract zero elements
@@ -210,7 +210,7 @@ public class DynamicArrayTests{
     // write tests for the other methods here
 
 
-    // get method tests
+    // getEle method tests
 
     /**
      * Tests that element at specific index can be accessed 
