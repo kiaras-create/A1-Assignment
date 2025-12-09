@@ -6,6 +6,10 @@ Other students you worked with, including TAs:
 Students: Chiashi Yang, Kiara Sunil Singh, Victoria Reyes Borges
 TAs: Marybella, Adriana, Molly 
 
+*** WHAT WE FIXED/CHANGED ***
+- We renamed the size and get methods to match the requirements so lenArray() -> size() and getEle() -> get().
+- We revised the add method and add method tests.
+- We revised the extract method. 
 
 If anyone was particularly helpful, please give them a shoutout here: Marybella, Molly, Adriana!!
 
