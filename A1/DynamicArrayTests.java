@@ -312,7 +312,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex() {
         a1.addElement('g');
-        assertEquals(a1.get(7), 'g');
+        assertEquals(a1.get(6), 'g');
 
     }
 
@@ -322,7 +322,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex2() {
         s.addElement('v');
-        assertEquals(a1.get(1), 'v');
+        assertEquals(s.get(1), 'v');
 
     }
 
@@ -332,7 +332,7 @@ public class DynamicArrayTests{
     @Test
     public void testAddEleMethodWithNoIndex3() {
         empty.addElement('r');
-        assertEquals(a1.get(0), 'r');
+        assertEquals(empty.get(0), 'r');
 
     }
 

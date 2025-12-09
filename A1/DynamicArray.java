@@ -154,15 +154,16 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param element specified element
      */
      public void addElement(T element) {
-        DynamicArray<T> temp = new DynamicArray<T>(size() + 1);
+        if (size == myArray.length){
+            T[] newArray = (T[]) new Object[myArray.length + 1];
         for (int i = 0; i < size(); i++) {
-            temp.setEle(i, get(i));
+            newArray[i] = myArray[i];
+            }
+        myArray = newArray; 
         }
-        temp.setEle(size(), element);
-        // reassigns this.myArray (base array) to the same array of temp
-        this.myArray = temp.myArray;
-     }
-
+        myArray[size] = element;
+        size++;
+    }
 
 
 
