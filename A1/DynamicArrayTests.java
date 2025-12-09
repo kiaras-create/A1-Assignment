@@ -210,7 +210,7 @@ public class DynamicArrayTests{
     // write tests for the other methods here
 
 
-    // getEle method tests
+    // get method tests
 
     /**
      * Tests that element at specific index can be accessed 
@@ -218,7 +218,7 @@ public class DynamicArrayTests{
      */
     @Test
     public void testGetMethod() {
-       assertEquals(a1.get(1), 'a');
+       assertEquals(a1.get(1), 'b');
     }
 
     /**
