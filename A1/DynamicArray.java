@@ -345,31 +345,36 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
     public DynamicArray<T> extractArray(int fromIndex, int toIndex) {
         //making the new array
 
+        // index checks
         if (fromIndex < 0) {
             throw new ArrayIndexOutOfBoundsException("Start index is negative and is out of bounds");
         }
 
-        if (fromIndex > size()){
-            throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is too large");
-        }
-
         if (toIndex < 0){
             throw new ArrayIndexOutOfBoundsException("End index (toIndex) is negative");
-
-        }
-
-        if (toIndex > size()){
-            throw new ArrayIndexOutOfBoundsException("End index (toIndex) is out of bounds");
         }
 
         if (fromIndex > toIndex){
             throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is larger than end index(toIndex)");
         }
 
-         if (size()==0){
-            throw new ArrayIndexOutOfBoundsException("Array is empty");
+        if (size() == 0){
+            if ((fromIndex == 0) && toIndex == 0) {
+                return new DynamicArray<T>(0);
+            } else {
+                throw new ArrayIndexOutOfBoundsException("Array is empty");
+            }
         }
 
+        // size and/or bounds checks
+        if (fromIndex > size()){
+            throw new ArrayIndexOutOfBoundsException("Start index (fromIndex) is too large");
+        }
+
+        if (toIndex > size()){
+            throw new ArrayIndexOutOfBoundsException("End index (toIndex) is out of bounds");
+        }
+        
         DynamicArray<T> extractedArray =  new DynamicArray<T>(toIndex - fromIndex);
 
        

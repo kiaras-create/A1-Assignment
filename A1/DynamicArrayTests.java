@@ -118,16 +118,15 @@ public class DynamicArrayTests{
         assertEquals(0, extracted.size());
     }
 
-
     /**
     * Tests that user attempts to extract an empty array  
     */
     @Test
-    public void TestExtractNone(){
-        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            a1.extractArray(0, 5);
-        });
-       
+    public void testExtractNone() {
+        ArrayIndexOutOfBoundsException ex = assertThrows(ArrayIndexOutOfBoundsException.class, () -> 
+        empty.extractArray(0, 1)
+        );
+
         assertTrue(ex.getMessage().contains("Array is empty"));
     }
 
