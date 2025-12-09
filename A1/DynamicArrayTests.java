@@ -266,11 +266,11 @@ public class DynamicArrayTests{
     public void testAddElementWithIndex(){
         a1.addElement(1, 'Z');
 
-        assertEquals(4, a1.size());
-        assertEquals("A", a1.get(0));
-        assertEquals("B", a1.get(1));
-        assertEquals("Z", a1.get(2));
-        assertEquals("C", a1.get(3));
+        assertEquals(6, a1.size());
+        assertEquals('a', a1.get(0));
+        assertEquals('Z', a1.get(1));
+        assertEquals('b', a1.get(2));
+        assertEquals('c', a1.get(3));
     }
 
 
