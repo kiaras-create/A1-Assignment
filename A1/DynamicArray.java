@@ -46,7 +46,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      * @param index of element user is trying to retrieve
      * @return element which was accessed
      */
-    public T getEle(int index) {
+    public T get(int index) {
         if (index >= 0) {
             if (index < lenArray(myArray)) {
                 return myArray[index];
@@ -128,11 +128,11 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
                 DynamicArray<T> temp = new DynamicArray<T>(lenArray(myArray) + 1);
                 for (int i = 0; i < index; i++) {
                     // T myEle = getEle(i);
-                    temp.setEle(i, getEle(i));
+                    temp.setEle(i, get(i));
                 }
                 temp.setEle(index, element);
                 for (int i = index; i < lenArray(this.myArray); i++) {
-                    temp.setEle(i+1, getEle(i));
+                    temp.setEle(i+1, get(i));
                 }
                 // reassigns this.myArray (base array) to the same array of temp
                 this.myArray = temp.myArray;
@@ -154,7 +154,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
      public void addElement(T element) {
         DynamicArray<T> temp = new DynamicArray<T>(lenArray(myArray) + 1);
         for (int i = 0; i < lenArray(myArray); i++) {
-            temp.setEle(i, getEle(i));
+            temp.setEle(i, get(i));
         }
         temp.setEle(lenArray(myArray), element);
         // reassigns this.myArray (base array) to the same array of temp
@@ -178,14 +178,14 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
 
             DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) - 1);
 
-            T removed = getEle(index);
+            T removed = get(index);
 
             for(int i = 0; i < lenArray(myArray); i++ ){
-                newArray.setEle(i, getEle(i)); //saving the stuff from old array into the same indeces for the new one
+                newArray.setEle(i, get(i)); //saving the stuff from old array into the same indeces for the new one
             }
 
             for (int i = index + 1; i < lenArray(myArray); i++){
-                newArray.setEle(i - 1, getEle(i));
+                newArray.setEle(i - 1, get(i));
             }
 
             this.myArray = newArray.myArray; // this new shelf is my shelf now; not sure if needed
@@ -207,10 +207,10 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
         DynamicArray<T> newArray =  new DynamicArray<T>(lenArray(myArray) + appendedArray.lenArray(appendedArray.myArray));
 
         for(int i = 0; i < appendedArray.lenArray(appendedArray.myArray); i++){ //copying array
-            newArray.setEle(i, getEle(i));
+            newArray.setEle(i, get(i));
         }
         for(int i = 0; i < appendedArray.lenArray(myArray); i ++){
-            T value = appendedArray.getEle(i); //getting a variable type T name value that gets the element at that index
+            T value = appendedArray.get(i); //getting a variable type T name value that gets the element at that index
             newArray.setEle(lenArray(appendedArray.myArray) + i, value);
         }
          return newArray; 
@@ -269,7 +269,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
             if (index < lenArray(myArray)) {
                 DynamicArray<T> newArray = new DynamicArray<>(myArray, (lenArray(myArray) - index));
                 for (int i = index; i < lenArray(myArray); i++) {
-                    newArray.setEle(i-index, getEle(i));
+                    newArray.setEle(i-index, get(i));
                 }
                 return newArray;
             } else {
@@ -317,7 +317,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
                 for (int i = 0; i < lenArray(myArray); i++) {
                     // SQUISHY PART
                     if ((i < startIndex) || (i >= endIndex)) {
-                        updatedDArray.setEle(i, getEle(i));
+                        updatedDArray.setEle(i, get(i));
                     }
                 }
                 return updatedDArray;
@@ -372,7 +372,7 @@ public class DynamicArray<T> implements IndexAccessADT<T> {
        
         //the value i is the value we are starting from, it should be less than the one we want to end at, and increment
         for(int i = fromIndex; i < toIndex; i ++){
-            T value = getEle(i); //getting a variable type T name value that gets the element at that index
+            T value = get(i); //getting a variable type T name value that gets the element at that index
             extractedArray.setEle(i - fromIndex, value); //let the new array set that element into the array; from the index minus the starting value (this allows the value to be put in the right index position), and place that value there
 
 

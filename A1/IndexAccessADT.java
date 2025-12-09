@@ -14,7 +14,7 @@ interface IndexAccessADT <T> {
      * will throw an exception if specified index is out of bounds
      * @return element which was accessed
      */
-    public T getEle(int index);
+    public T get(int index);
 
     /**
      * 
